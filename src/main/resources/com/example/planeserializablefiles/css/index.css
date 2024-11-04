@@ -1,0 +1,14 @@
+Button{
+    -fx-background-color: #8d36ff;
+    -fx-text-fill: #fff;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-cursor: "hand";
+}
+
+Button:hover{
+    -fx-background-color: #6f00ff;
+    -fx-text-fill: #fff;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+}

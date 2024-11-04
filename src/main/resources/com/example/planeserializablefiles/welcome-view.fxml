@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="360.0" prefWidth="480.0" spacing="20.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.planeserializablefiles.controller.WelcomeController">
+   <children>
+      <Button mnemonicParsing="false" onAction="#handleClickExit" stylesheets="@css/index.css" text="X">
+         <VBox.margin>
+            <Insets left="424.0" top="16.0" />
+         </VBox.margin>
+      </Button>
+      <Label styleClass="welcome-title" stylesheets="@css/styles-welcome.css" text="Sopa de letras">
+         <VBox.margin>
+            <Insets top="16.0" />
+         </VBox.margin>
+      </Label>
+      <Label layoutX="111.0" layoutY="168.0" text="Digite su usario" textFill="#ececec">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="-8.0" top="16.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="userTxt" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: #b7b7b7;">
+         <font>
+            <Font name="Lucida Console" size="14.0" />
+         </font>
+      </TextField>
+      <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClickPlay" prefHeight="25.0" prefWidth="160.0" stylesheets="@css/index.css" text="Jugar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</VBox>
