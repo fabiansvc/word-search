@@ -4,9 +4,9 @@ public class Player {
     private String nickname;
     private int wordsFound;
 
-    public Player(String nickname) {
+    public Player(String nickname, int wordsFound) {
         this.nickname = nickname;
-        this.wordsFound = 0;
+        this.wordsFound = wordsFound;
     }
 
     public String getNickname() {
