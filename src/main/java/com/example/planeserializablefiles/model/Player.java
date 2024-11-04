@@ -1,12 +1,14 @@
 package com.example.planeserializablefiles.model;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private String nickname;
     private int wordsFound;
 
-    public Player(String nickname) {
+    public Player(String nickname, int wordsFound) {
         this.nickname = nickname;
-        this.wordsFound = 0;
+        this.wordsFound = wordsFound;
     }
 
     public String getNickname() {
