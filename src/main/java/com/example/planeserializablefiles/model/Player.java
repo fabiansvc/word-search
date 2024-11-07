@@ -1,6 +1,8 @@
 package com.example.planeserializablefiles.model;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private String nickname;
     private int wordsFound;
 
@@ -23,5 +25,13 @@ public class Player {
 
     public void setWordsFound(int wordsFound) {
         this.wordsFound = wordsFound;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "nickname='" + nickname + '\'' +
+                ", wordsFound=" + wordsFound +
+                '}';
     }
 }
