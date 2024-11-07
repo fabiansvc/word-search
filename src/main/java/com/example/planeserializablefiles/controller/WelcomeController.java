@@ -17,10 +17,12 @@ public class WelcomeController {
     private TextField userTxt;
 
     private PlainTextFileHandler plainTextHandler;
+    private SerializableFileHandler serializableFileHandler;
 
     @FXML
     public void initialize() {
         plainTextHandler = new PlainTextFileHandler();
+        serializableFileHandler = new SerializableFileHandler();
     }
 
     @FXML
@@ -31,8 +33,10 @@ public class WelcomeController {
     @FXML
     public void handleClickPlay(ActionEvent event) {
         Player player = new Player(userTxt.getText().trim(), 0);
-        plainTextHandler.writeToFile("player_data.csv",
-                player.getNickname() + "," + player.getWordsFound());
+//        plainTextHandler.writeToFile("player_data.csv",
+//                player.getNickname() + "," + player.getWordsFound());
+
+        serializableFileHandler.serialize("player_data.ser", player);
 
         WelcomeStage.deleteInstance();
         GameStage.getInstance().getGameController().startPlay(player);
@@ -45,9 +49,7 @@ public class WelcomeController {
 //        String nickname = data[0];
 //        int wordsFound = Integer.parseInt(data[1]);
 //        Player player = new Player(nickname, wordsFound);
-
-        SerializableFileHandler serializableFileHandler = new SerializableFileHandler();
-        Player player = (Player) serializableFileHandler.deserialize("game.ws");
+        Player player = (Player) serializableFileHandler.deserialize("player_data.ser");
 
         WelcomeStage.deleteInstance();
         GameStage.getInstance().getGameController().startPlay(player);

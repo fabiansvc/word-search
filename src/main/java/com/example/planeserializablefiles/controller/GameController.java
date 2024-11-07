@@ -69,15 +69,14 @@ public class GameController {
                 wordLabel.setText("");
                 this.wordsFounds.addAll(wordsSelected);
                 this.wordsSelected.clear();
-                player.setWordsFound(wordSearch.getWordsFounds());
+                player.setWordsFound(player.getWordsFound() + 1);
 
 //                PlainTextFileHandler plainTextHandler = new PlainTextFileHandler();
 //                plainTextHandler.writeToFile("player_data.csv",
 //                        player.getNickname() + "," + player.getWordsFound());
 
-                player.setWordsFound(wordSearch.getWordsFounds());
                 SerializableFileHandler serializableFileHandler = new SerializableFileHandler();
-                serializableFileHandler.serialize("game.ws", player);
+                serializableFileHandler.serialize("player_data.ser", player);
             }
         });
     }
@@ -105,8 +104,10 @@ public class GameController {
 
     public void startPlay(Player player) {
         this.player = player;
-        System.out.println(player.getNickname());
-        System.out.println(player.getWordsFound());
+        System.out.println(player.toString());
+        this.wordsFoundLabel.setText(String.valueOf(player.getWordsFound()));
         createTable();
     }
+
+
 }
