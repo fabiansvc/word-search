@@ -1,8 +1,8 @@
 package com.example.planeserializablefiles.controller;
 
-import com.example.planeserializablefiles.model.PlaneTextFileReader;
+import com.example.planeserializablefiles.model.PlainTextFileHandler;
 import com.example.planeserializablefiles.model.Player;
-import com.example.planeserializablefiles.model.SeriazableFileHandler;
+import com.example.planeserializablefiles.model.SerializableFileHandler;
 import com.example.planeserializablefiles.view.GameStage;
 import com.example.planeserializablefiles.view.WelcomeStage;
 import javafx.event.ActionEvent;
@@ -10,17 +10,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class WelcomeController {
-    private PlaneTextFileReader planeTextFileReader;
-    private SeriazableFileHandler seriazableFileHandler;
-
-    @FXML
-    public void initialize() {
-        this.planeTextFileReader = new PlaneTextFileReader();
-        this.seriazableFileHandler = new SeriazableFileHandler();
-    }
 
     @FXML
     private TextField userTxt;
+
+    private PlainTextFileHandler plainTextHandler;
+    private SerializableFileHandler serializableFileHandler;
+
+    @FXML
+    public void initialize() {
+        plainTextHandler = new PlainTextFileHandler();
+        serializableFileHandler = new SerializableFileHandler();
+    }
 
     @FXML
     public void handleClickExit(ActionEvent event) {
@@ -28,29 +29,25 @@ public class WelcomeController {
     }
 
     @FXML
-    void handleClickPlay(ActionEvent event) {
+    public void handleClickPlay(ActionEvent event) {
         Player player = new Player(userTxt.getText().trim(), 0);
+//        plainTextHandler.writeToFile("player_data.csv",
+//                player.getNickname() + "," + player.getWordsFound());
 
-        //String content = player.getNickname() + "," + player.getWordsFound();
-        //planeTextFileReader.writeToFile("player_data.csv", content);
-
-        seriazableFileHandler.serialize("player_data.ser", player);
+        serializableFileHandler.serialize("player_data.ser", player);
 
         WelcomeStage.deleteInstance();
         GameStage.getInstance().getGameController().startPlay(player);
     }
 
     @FXML
-    void handleClickContinue(ActionEvent event) {
-        //String[] data = planeTextFileReader.readFromFile("player_data.csv");
-        //String nickname = data[0];
-        //int wordsFounds = Integer.parseInt(data[1]);
-        //Player player = new Player(nickname, wordsFounds);
-
-        Player player = (Player) seriazableFileHandler.deserialize("player_data.ser");
-
-        System.out.println(player.getNickname());
-        System.out.println(player.getWordsFound());
+    public void handleClickContinue(ActionEvent event) {
+//        String[] data = plainTextHandler.readFromFile("player_data.csv");
+//
+//        String nickname = data[0];
+//        int wordsFound = Integer.parseInt(data[1]);
+//        Player player = new Player(nickname, wordsFound);
+        Player player = (Player) serializableFileHandler.deserialize("player_data.ser");
 
         WelcomeStage.deleteInstance();
         GameStage.getInstance().getGameController().startPlay(player);

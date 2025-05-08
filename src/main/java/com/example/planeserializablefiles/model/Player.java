@@ -26,4 +26,12 @@ public class Player implements Serializable {
     public void setWordsFound(int wordsFound) {
         this.wordsFound = wordsFound;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "nickname='" + nickname + '\'' +
+                ", wordsFound=" + wordsFound +
+                '}';
+    }
 }
