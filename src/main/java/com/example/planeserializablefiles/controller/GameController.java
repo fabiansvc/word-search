@@ -1,6 +1,8 @@
 package com.example.planeserializablefiles.controller;
 
+import com.example.planeserializablefiles.model.PlaneTextFileReader;
 import com.example.planeserializablefiles.model.Player;
+import com.example.planeserializablefiles.model.SeriazableFileHandler;
 import com.example.planeserializablefiles.model.WordSearch;
 import com.example.planeserializablefiles.view.GameStage;
 import com.example.planeserializablefiles.view.WelcomeStage;
@@ -67,6 +69,16 @@ public class GameController {
                 wordLabel.setText("");
                 this.wordsFounds.addAll(wordsSelected);
                 this.wordsSelected.clear();
+
+                player.setWordsFound(player.getWordsFound() + 1);
+
+                /* PlaneTextFileReader planeTextFileReader = new PlaneTextFileReader();
+                planeTextFileReader.writeToFile(
+                        "player_data.csv",
+                        player.getNickname() + "," + player.getWordsFound()
+                        ); */
+                SeriazableFileHandler seriazableFileHandler = new SeriazableFileHandler();
+                seriazableFileHandler.serialize("player_data.ser", player);
             }
         });
     }
@@ -94,6 +106,7 @@ public class GameController {
 
     public void startPlay(Player player) {
         this.player = player;
+        this.wordsFoundLabel.setText(String.valueOf(player.getWordsFound()));
         createTable();
     }
 }
