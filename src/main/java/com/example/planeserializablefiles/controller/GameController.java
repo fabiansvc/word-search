@@ -104,7 +104,6 @@ public class GameController {
 
     public void startPlay(Player player) {
         this.player = player;
-        System.out.println(player.toString());
         this.wordsFoundLabel.setText(String.valueOf(player.getWordsFound()));
         createTable();
     }
